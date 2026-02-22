@@ -19,11 +19,6 @@ final readonly class OrderCancelled implements PrivateEvent
         $this->id = new PrivateEventId('id');
     }
 
-    public function equals(CollectionItem $item): bool
-    {
-        return $this->identity() === $item->identity();
-    }
-
     public function identity(): string
     {
         return $this->id->value;

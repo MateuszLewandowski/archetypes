@@ -30,6 +30,29 @@ abstract class Collection
         $this->values[] = $item;
     }
 
+    public function remove(CollectionItem $item): void
+    {
+        foreach ($this->values as $value) {
+            if ($value->equals($item)) {
+                $this->values = array_filter(
+                    $this->values,
+                    static fn (CollectionItem $i) => !$i->equals($item)
+                );
+                return;
+            }
+        }
+    }
+
+    public function count(): int
+    {
+        return count($this->values);
+    }
+
+    public function list(): array
+    {
+        return $this->values;
+    }
+
     public function isEmpty(): bool
     {
         return empty($this->values);

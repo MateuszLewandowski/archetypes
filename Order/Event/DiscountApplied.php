@@ -15,13 +15,7 @@ final readonly class DiscountApplied implements PrivateEvent
         public PrivateEventId $id,
         public Discount       $discount,
         public CustomerId     $customerId,
-    )
-    {
-    }
-
-    public function equals(CollectionItem $item): bool
-    {
-        return $this->identity() === $item->identity();
+    ) {
     }
 
     public function identity(): string

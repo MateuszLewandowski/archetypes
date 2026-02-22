@@ -31,7 +31,6 @@ final readonly class OrderItem implements CollectionItem
         );
     }
 
-
     public function isEmpty(): bool
     {
         return $this->quantity->value === 0;
