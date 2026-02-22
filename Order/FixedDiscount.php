@@ -9,7 +9,7 @@ final readonly class FixedDiscount extends Discount
         DiscountCode $code,
         DiscountType $type,
         OrderItemTypes $applicableFor,
-        public Amount $value,
+        public Money $money,
     ) {
         parent::__construct($code, $type, $applicableFor);
     }
@@ -23,4 +23,10 @@ final readonly class FixedDiscount extends Discount
     {
         return $this->code->value;
     }
+
+    public function calculate(Money $money): Money
+    {
+        return $this->money->subtract($money);
+    }
+
 }

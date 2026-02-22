@@ -6,10 +6,10 @@ namespace Exception;
 
 use Error;
 
-final class UnsupportedDiscountError extends Error
+final class IncompatibleCurrencyTypesError extends Error
 {
     public function __construct()
     {
-        parent::__construct('Unsupported discount type');
+        parent::__construct('Incompatible currency types');
     }
 }

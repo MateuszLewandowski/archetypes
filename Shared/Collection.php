@@ -23,6 +23,15 @@ abstract class Collection
 
     public function add(CollectionItem $item): void
     {
+        if ($this->exists($item)) {
+            return;
+        }
+
         $this->values[] = $item;
+    }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->values);
     }
 }

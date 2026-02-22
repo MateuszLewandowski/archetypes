@@ -8,10 +8,12 @@ final readonly class PercentageDiscount extends Discount
         DiscountCode $code,
         DiscountType $type,
         OrderItemTypes $applicableFor,
-        public Quantity $value,
+        public Percentage $percentage,
+
     ) {
         parent::__construct($code, $type, $applicableFor);
     }
+
 
     public function equals(CollectionItem $item): bool
     {
@@ -22,4 +24,15 @@ final readonly class PercentageDiscount extends Discount
     {
         return $this->code->value;
     }
+
+    public function calculate(Money $money): Money
+    {
+        $discountedAmount = $money->amount->value * ($this->percentage->value / 100);
+
+        return new Money(
+            Amount::of($money->amount->value - $discountedAmount),
+            $money->currency,
+        );
+    }
+
 }

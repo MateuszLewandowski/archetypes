@@ -8,4 +8,9 @@ enum Currency: string
     case USD = 'USD';
     case EUR = 'EUR';
     case GBP = 'GBP';
+
+    public function isTheSame(self $currency): bool
+    {
+        return $this === $currency;
+    }
 }

@@ -8,4 +8,9 @@ abstract readonly class Identity
         public string $value,
     ) {
     }
+
+    public static function create(): static
+    {
+        return new static('uuid-v7');
+    }
 }

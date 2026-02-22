@@ -15,4 +15,6 @@ abstract readonly class Discount implements CollectionItem
     {
         return $this->applicableFor->exists($orderItemType);
     }
+
+    abstract public function calculate(Money $money): Money;
 }
